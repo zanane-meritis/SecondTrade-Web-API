@@ -1,0 +1,6 @@
+
+*.class
+
+target/classes/META-INF/maven/fr.secondtrade/secondtrade-web-api/pom.xml
+target
+org.eclipse.core.resources.prefs
