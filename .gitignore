@@ -4,3 +4,13 @@
 target/classes/META-INF/maven/fr.secondtrade/secondtrade-web-api/pom.xml
 target
 org.eclipse.core.resources.prefs
+.settings/.jsdtscope
+.settings/org.eclipse.wst.validation.prefs
+.settings/org.eclipse.wst.jsdt.ui.superType.container
+.project
+.settings/org.eclipse.wst.common.component
+.settings/org.eclipse.wst.jsdt.ui.superType.name
+.classpath
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
