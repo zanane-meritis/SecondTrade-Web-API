@@ -8,7 +8,7 @@ import fr.secondtrade.businessdao.configuration.PersistenceConfiguration;
 
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "fr.secondtrade.webapi" })
-@Import({ PersistenceConfiguration.class, SecurityConfig.class })
+@Import({ PersistenceConfiguration.class, SecurityConfig.class, WebConfig.class})
 public class ApplicationConfig {
 	
 }

@@ -5,14 +5,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import fr.secondtrade.webapi.models.ApplicationModel;
 import fr.secondtrade.webapi.models.Response;
 
-@Controller
+@RestController
 public class IndexController {
 	
 	@Autowired
@@ -24,9 +24,9 @@ public class IndexController {
 		messages = application.getMessages();
 	}
 	
-	@RequestMapping(value = "index", method = RequestMethod.GET)
-	public Response index(){
-		return new Response(200,"index");
+	@RequestMapping(value = "getAgentById", method = RequestMethod.GET)
+	public Response getAgentById(){
+		return new Response(0,application.getAgentById(1));
 	}
 	
 }
