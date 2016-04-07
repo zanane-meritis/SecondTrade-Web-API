@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import fr.secondtrade.businessdao.business.IBusiness;
 import fr.secondtrade.businessdao.entities.Agent;
 import fr.secondtrade.businessdao.entities.Investor;
+import fr.secondtrade.businessdao.entities.Issuer;
 import fr.secondtrade.webapi.helpers.Static;
 
 @Component
@@ -22,6 +23,7 @@ public class ApplicationModel implements IBusiness{
 	// données provenant de la couche [métier]
 	private List<Agent> agents; 
 	private List<Investor> investors; 
+	private List<Issuer> issuers; 
 	// messages d'erreur
 	private List<String> messages;
 	
@@ -31,6 +33,8 @@ public class ApplicationModel implements IBusiness{
 		try {
 			agents = business.getAllAgents();
 			investors = business.getAllInverstors(); 
+			issuers = business.getAllIssuers();
+			System.out.println("Size of issuers = "+issuers.size());
 		} catch (Exception ex) {
 			messages = Static.getErreursForException(ex);
 		}
@@ -58,6 +62,16 @@ public class ApplicationModel implements IBusiness{
 	@Override
 	public Investor getInvestorById(long id) {
 		return business.getInvestorById(id);
+	}
+
+	@Override
+	public Issuer getIssuerById(long id) {
+		return business.getIssuerById(id);
+	}
+
+	@Override
+	public List<Issuer> getAllIssuers() {
+		return issuers;
 	}
 	
 }

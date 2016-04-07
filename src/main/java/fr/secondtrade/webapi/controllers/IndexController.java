@@ -24,9 +24,29 @@ public class IndexController {
 		messages = application.getMessages();
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public Response index(){
+		return new Response(0,"index");
+	}
+	
 	@RequestMapping(value = "getAgentById", method = RequestMethod.GET)
 	public Response getAgentById(){
 		return new Response(0,application.getAgentById(1));
+	}
+	
+	@RequestMapping(value = "getAllAgents", method = RequestMethod.GET)
+	public Response getAllAgents(){
+		return new Response(0,application.getAllAgents());
+	}
+	
+	@RequestMapping(value = "getIssuerById", method = RequestMethod.GET)
+	public Response getIssuerById(){
+		return new Response(0,application.getIssuerById(1));
+	}
+	
+	@RequestMapping(value = "getAllIssuers", method = RequestMethod.GET)
+	public Response getAllIssuers(){
+		return new Response(0,application.getAllIssuers());
 	}
 	
 }
