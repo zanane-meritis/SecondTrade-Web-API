@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.secondtrade.businessdao.entities.Agent;
+import fr.secondtrade.businessdao.entities.Issuer;
+import fr.secondtrade.webapi.helpers.Static;
 import fr.secondtrade.webapi.models.ApplicationModel;
 import fr.secondtrade.webapi.models.Response;
 
@@ -29,24 +32,55 @@ public class IndexController {
 		return new Response(0,"index");
 	}
 	
-	@RequestMapping(value = "getAgentById", method = RequestMethod.GET)
-	public Response getAgentById(){
-		return new Response(0,application.getAgentById(1));
+	public Response getAgentById(long id){
+		Agent agent = null;
+		try{
+			agent = application.getAgentById(id);
+		}catch(Exception e1){
+			return new Response(1,Static.getErreursForException(e1));
+		}
+		if(agent==null){
+			return new Response(2,null);
+		}
+		return new Response(0,agent);
 	}
 	
-	@RequestMapping(value = "getAllAgents", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllAgents", method = RequestMethod.GET)
 	public Response getAllAgents(){
-		return new Response(0,application.getAllAgents());
+		if(messages != null){
+			return new Response(-1,messages);
+		}
+		try {
+			return new Response(0,application.getAllAgents());
+		} catch (Exception e) {
+			return new Response(1,Static.getErreursForException(e));
+		}
 	}
 	
-	@RequestMapping(value = "getIssuerById", method = RequestMethod.GET)
-	public Response getIssuerById(){
-		return new Response(0,application.getIssuerById(1));
+	
+	public Response getIssuerById(long id){
+		Issuer issuer = null;
+		try{
+			issuer = application.getIssuerById(id);
+		}catch(Exception e1){
+			return new Response(1,Static.getErreursForException(e1));
+		}
+		if(issuer==null){
+			return new Response(2,null);
+		}
+		return new Response(0,issuer);
 	}
 	
-	@RequestMapping(value = "getAllIssuers", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllIssuers", method = RequestMethod.GET)
 	public Response getAllIssuers(){
-		return new Response(0,application.getAllIssuers());
+		if(messages != null){
+			return new Response(-1,messages);
+		}
+		try {
+			return new Response(0,application.getAllIssuers());
+		} catch (Exception e) {
+			return new Response(1,Static.getErreursForException(e));
+		}
 	}
 	
 }
